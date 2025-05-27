@@ -1,0 +1,37 @@
+.submenuButton_container{
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 100%;
+    padding: 0 1em;
+
+    color: #fff;
+
+    transition: all 0.2s ease-in-out;
+}
+.submenuButton_container:hover{
+    
+    background-color: #ffffffbe;
+    color: var(--cls-primary);
+
+    & .submenuButton_title{
+        color: var(--cls-primary);
+    }
+}
+.submenuButton_icon{
+    font-size: 1.4em;
+}
+.submenuButton_link{
+    text-decoration: none;
+}
+.submenuButton_title{
+    cursor: pointer;
+
+    width: 100%;
+    padding: .2em 1em;
+
+    color: #fff;
+    transition: all 0.2s ease-in-out;
+}

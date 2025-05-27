@@ -1,0 +1,27 @@
+.menuButton_container{
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+}
+
+.menuButton_link{
+    text-decoration: none;
+}
+.menuButton_title{
+    cursor: pointer;
+
+    padding: 1em;
+
+    color: var(--cls-primary);
+
+    transition: all 0.2s ease-in-out;
+}
+
+.menuButton_title:hover,
+.menuButton_link_active{
+    color: #fff;
+    background-color: var(--cls-primary);
+}

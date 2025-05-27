@@ -1,0 +1,10 @@
+.not_found_page_container{
+    display: flex; 
+    justify-content: center;
+    align-items: center;
+}
+
+h1{
+    font-size: 32px;
+    color: #ff0040;
+}
