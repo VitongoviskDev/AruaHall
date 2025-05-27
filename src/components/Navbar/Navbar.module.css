@@ -1,20 +1,13 @@
 .navbar_container{
-    --cls-primary: #174372;
-    --cls-accent: #007bff;
-    --cls-background: #aaaaaa;
-
     position: relative;
 
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-
-    padding-bottom: .5em;
 }
 
 .navbar{
-    background-color: var(--cls-background);
     width: 100%;
 }
 

@@ -1,6 +1,6 @@
 import type MenuButtonDTO from "../DTOs/MenuButtonDTO";
 import { FaGlobe, FaHamburger, FaPaintRoller, FaPencilRuler, FaShoppingBasket, FaTshirt } from "react-icons/fa";
-import { GiFamilyHouse, GiMineTruck } from "react-icons/gi";
+import { GiIsland, GiMineTruck } from "react-icons/gi";
 import { PiCourtBasketballFill, PiParkBold } from "react-icons/pi";
 import { IoRestaurant } from "react-icons/io5";
 import { IoIosPhonePortrait } from "react-icons/io";
@@ -22,6 +22,7 @@ const Menu: MenuItem = {
             submenus: [
                 {
                     title: "Lazer",
+                    path: "/locals/leisure",
                     items: [
                         {
                             title: "Parques",
@@ -31,11 +32,12 @@ const Menu: MenuItem = {
                         {
                             title: "Pousadas",
                             path: "/locals/leisure/inns",
-                            icon: <GiFamilyHouse />
+                            icon: <GiIsland  />
                         }
                     ]
                 }, {
                     title: "Restaurantes",
+                    path: "/locals/restaurants",
                     items: [
                         {
                             title: "Hamburguerias",
@@ -52,6 +54,7 @@ const Menu: MenuItem = {
                     ]
                 }, {
                     title: "Compras",
+                    path: "/locals/shopping",
                     items: [
                         {
                             title: "Roupas",
@@ -74,6 +77,7 @@ const Menu: MenuItem = {
                     ]
                 }, {
                     title: "Esportes",
+                    path: "/locals/sports",
                     items: [
                         {
                             title: "Academias",
@@ -97,6 +101,7 @@ const Menu: MenuItem = {
             submenus: [
                 {
                     title: "Limpeza",
+                    path: "/services/cleaning",
                     items: [
                         {
                             title: "Diarias",
@@ -111,6 +116,7 @@ const Menu: MenuItem = {
                     ]
                 }, {
                     title: "Construção e Reforma",
+                    path: "/services/constructions",
                     items: [
                         {
                             title: "Engenheiros",
@@ -137,6 +143,7 @@ const Menu: MenuItem = {
                     ]
                 }, {
                     title: "Locação",
+                    path: "/services/lease",
                     items: [
                         {
                             title: "Máquinas",
@@ -153,6 +160,7 @@ const Menu: MenuItem = {
                     ]
                 }, {
                     title: "Publicidade",
+                    path: "/services/publicity",
                     items: [
                         {
                             title: "Sites",

@@ -11,7 +11,7 @@ import SubmenuContainer from './SubmenuContainer';
 const Navbar = () => {
   const [displayedSubmenus, setDisplayedSubmenus] = useState<SubmenuDTO[]>([]);
   const [submenuShown, setSubmenuShown] = useState<boolean>(false);
-  const [timeoutId, setTimeoutId] = useState<number | null>(null);
+  const [timeoutId, setTimeoutId] = useState<number[]>([]);
 
   const onMenuButtonMouseEnter = (submenus: SubmenuDTO[]) => {
     if(submenus.length > 0)
@@ -24,14 +24,24 @@ const Navbar = () => {
     <div className={styles.navbar_container}
       onPointerEnter={() => {
         setSubmenuShown(displayedSubmenus.length > 0);
-        if (timeoutId)
-          clearTimeout(timeoutId);
+
+        //clear timeouts so menu doesn't close when hovering just before closing
+        timeoutId.map((id) => {
+          clearTimeout(id);
+        });
+
       }}
       onPointerLeave={() => {
-        const id = setTimeout(() => {
+        const showId = setTimeout(() => {
           setSubmenuShown(false);
+
+          //wait submenus to be hidden before clearing them
+          const submenusId = setTimeout(() => {
+            setDisplayedSubmenus([]);
+          }, 300)
+          setTimeoutId(prev => [submenusId, ...prev]);
         }, 500);
-        setTimeoutId(id);
+        setTimeoutId(prev => [showId, ...prev]);
       }}>
       <nav className={styles.navbar}>
         <ul className={styles.navbar_list}>

@@ -2,7 +2,6 @@
     position: relative;
     display: flex;
     align-items: center;
-    justify-content: center;
 
     width: 100%;
     padding: 0 1em;
@@ -21,6 +20,10 @@
     }
 }
 .submenuButton_icon{
+    position: relative;
+    display: flex;
+    align-items: center;
+    
     font-size: 1.4em;
 }
 .submenuButton_link{
@@ -32,6 +35,8 @@
     width: 100%;
     padding: .2em 1em;
 
+    font-size: .9em;
     color: #fff;
+    
     transition: all 0.2s ease-in-out;
 }

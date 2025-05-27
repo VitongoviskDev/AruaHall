@@ -1,16 +1,15 @@
 .submenus_container{
-    cursor: pointer;
-
     position: absolute;
     top: 100%;
 
     display: flex;
     justify-content: center;
 
+    margin-top: 1em;
     padding: 1em;
 
     background-color: var(--cls-primary);
-    box-shadow: 0 0 10px #0000007b;
+    box-shadow: 0 0 .4em #ffffff7b;
     border-radius: 1em;
 
     opacity: 1;
@@ -33,12 +32,18 @@
     gap: .5em;
 
     height: 100%;
-    padding: .5em;
+}
+
+.submenu_title_container{
+    width: 100%;
+    padding: 0 2em 0 1em;
+
+    margin-bottom: .5em;
 }
 .submenu_title{
-    width: 100%;
-    height: 2em;
+    text-align: start;
     font-weight: 600;
+    text-decoration: none;
 }
 .submenu_list{
     list-style-type: none;

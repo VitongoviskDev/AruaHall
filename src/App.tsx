@@ -8,11 +8,12 @@ import NotFoundPage from './pages/NotFound'
 import Navbar from './components/Navbar'
 import LocalsPage from './pages/LocalsPage'
 import ServicePage from './pages/ServicePage'
+import Header from './components/Header'
 
 const App:React.FC = () => {
   return (
     <div className={styles.app_container}>
-      <Navbar />
+      <Header />
       <main>
         <Routes>
           <Route path="/" element={<HomePage />} />

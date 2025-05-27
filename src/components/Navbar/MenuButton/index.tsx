@@ -5,13 +5,14 @@ import { Link } from 'react-router-dom';
 import styles from './MenuButton.module.css'
 import type MenuButtonDTO from '../../../DTOs/MenuButtonDTO';
 import type SubmenuDTO from '../../../DTOs/SubmenuDTO';
+import { IoIosArrowDropdown } from 'react-icons/io';
 
 interface MenuButtonProps {
     menuButton: MenuButtonDTO;
     onMouseEnter: (submenus: SubmenuDTO[]) => void;
 }
 
-const MenuButton: React.FC<MenuButtonProps> = ({ menuButton, onMouseEnter}) => {
+const MenuButton: React.FC<MenuButtonProps> = ({ menuButton, onMouseEnter }) => {
 
     return (
         <div className={styles.menuButton_container}
@@ -27,6 +28,12 @@ const MenuButton: React.FC<MenuButtonProps> = ({ menuButton, onMouseEnter}) => {
                         className={`${styles.menuButton_title}`}>
                         {menuButton.title}
                     </span>
+            }
+            {
+                menuButton.submenus &&
+                <div className={styles.menuButton_dropdownIcon}>
+                    <IoIosArrowDropdown />
+                </div>
             }
         </div>
     )
