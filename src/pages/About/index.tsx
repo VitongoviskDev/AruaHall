@@ -2,7 +2,7 @@ import React from 'react'
 
 import styles from './AboutPage.module.css'
 
-const AboutPage = () => {
+const AboutPage:React.FC = () => {
   return (
     <div className={styles.about_page_container}>
       ABOUT PAGE

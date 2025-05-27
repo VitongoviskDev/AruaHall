@@ -11,7 +11,7 @@ if (!rootElement) {
 }
 
 ReactDOM.createRoot(rootElement).render(
-  <BrowserRouter>
+  <BrowserRouter basename="/AruaHall" >
     <App />
   </BrowserRouter>
 )

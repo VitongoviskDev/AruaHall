@@ -9,7 +9,7 @@ import Navbar from './components/Navbar'
 import LocalsPage from './pages/LocalsPage'
 import ServicePage from './pages/ServicePage'
 
-const App = () => {
+const App:React.FC = () => {
   return (
     <div className={styles.app_container}>
       <Navbar />
