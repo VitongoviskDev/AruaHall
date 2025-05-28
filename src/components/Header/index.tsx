@@ -1,9 +1,10 @@
 import React from 'react'
 
 import styles from './Header.module.css'
-import Navbar from '../Navbar'
 
 import logo from '../../assets/AruaHallLogo2White.png'
+import { BurgerMenu } from '../BurgerMenu'
+import Navbar from '../Navbar'
 
 const Header: React.FC = () => {
   return (
@@ -13,11 +14,9 @@ const Header: React.FC = () => {
           className={styles.header_logo}
           src={logo} alt="LOGO" />
       </div>
-      <div className={styles.header_navbar_container}>
-        <Navbar />
-      </div>
-      <div className={styles.header_cta_container}>
-        publique
+      <div className={styles.header_menu_container}>
+        <BurgerMenu id={styles.header_menu_burgerMenu}/>
+        <Navbar id={styles.header_menu_navbar}/>
       </div>
     </div>
   )

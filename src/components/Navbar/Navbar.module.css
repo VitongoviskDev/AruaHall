@@ -1,22 +1,32 @@
-.navbar_container{
-    position: relative;
+.navbar_container {
+    height: 100%;
+    max-height: 80vh;
+    overflow-y: scroll;
+}
 
+
+.navbar_list {
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    gap: 1em;
 }
 
-.navbar{
-    width: 100%;
-}
-
-.navbar_list{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: .2em;
-}
-.navbar_list > li{
+.navbar_list_item {
     list-style: none;
+}
+
+@media (min-width: 720px) {
+    .navbar_list {
+        flex-direction: row;
+        gap: .3em;
+    }
+    .navbar_container::-webkit-scrollbar{
+        display: none;
+    }
+}
+
+@media (min-width: 1200px) {
+    .navbar_list {
+        justify-content: center;
+    }
 }

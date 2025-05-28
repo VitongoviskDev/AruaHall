@@ -5,61 +5,50 @@ import Menu from '../../util/menu.js';
 import MenuButton from './MenuButton';
 
 import type MenuButtonDTO from '../../DTOs/MenuButtonDTO';
-import type SubmenuDTO from '../../DTOs/SubmenuDTO';
 import SubmenuContainer from './SubmenuContainer';
 
-const Navbar = () => {
-  const [displayedSubmenus, setDisplayedSubmenus] = useState<SubmenuDTO[]>([]);
-  const [submenuShown, setSubmenuShown] = useState<boolean>(false);
-  const [timeoutId, setTimeoutId] = useState<number[]>([]);
 
-  const onMenuButtonMouseEnter = (submenus: SubmenuDTO[]) => {
-    if(submenus.length > 0)
-      setDisplayedSubmenus(submenus);
-    
-    setSubmenuShown(submenus.length > 0);
+interface NavbarProps {
+  closeMenu?: () => void;
+  id?: string;
+}
+
+const Navbar: React.FC<NavbarProps> = ({ closeMenu = () =>{}, id }) => {
+  const [displayedSubmenu, setDisplayedSubmenu] = useState<MenuButtonDTO | null>();
+
+  const onMenuButtonClick = (menuButton: MenuButtonDTO) => {
+    console.log("click")
+    setDisplayedSubmenu(prev => prev !== menuButton ? menuButton : null);
+  }
+
+  const OnCloseMenu = () => {
+    closeMenu();
+    setDisplayedSubmenu(null);
   }
 
   return (
-    <div className={styles.navbar_container}
-      onPointerEnter={() => {
-        setSubmenuShown(displayedSubmenus.length > 0);
-
-        //clear timeouts so menu doesn't close when hovering just before closing
-        timeoutId.map((id) => {
-          clearTimeout(id);
-        });
-
-      }}
-      onPointerLeave={() => {
-        const showId = setTimeout(() => {
-          setSubmenuShown(false);
-
-          //wait submenus to be hidden before clearing them
-          const submenusId = setTimeout(() => {
-            setDisplayedSubmenus([]);
-          }, 300)
-          setTimeoutId(prev => [submenusId, ...prev]);
-        }, 500);
-        setTimeoutId(prev => [showId, ...prev]);
-      }}>
+    <div className={styles.navbar_container} id={id}>
       <nav className={styles.navbar}>
         <ul className={styles.navbar_list}>
           {
             Menu.items.map((item: MenuButtonDTO, index) => (
               <li
+                className={styles.navbar_list_item}
                 key={index}>
                 <MenuButton
                   menuButton={item}
-                  onMouseEnter={onMenuButtonMouseEnter} />
+                  onClick={onMenuButtonClick}
+                  closeMenu={OnCloseMenu}
+                  submenuShown={displayedSubmenu == item} />
+                <SubmenuContainer
+                  menuButton={item}
+                  shown={item == displayedSubmenu} 
+                  closeMenu={OnCloseMenu}/>
               </li>
             ))
           }
         </ul>
       </nav>
-      {
-        <SubmenuContainer submenus={displayedSubmenus} shown={submenuShown}/>
-      }
     </div>
   )
 }

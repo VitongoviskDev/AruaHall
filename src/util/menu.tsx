@@ -14,7 +14,7 @@ const Menu: MenuItem = {
     items: [
         {
             title: "Home",
-            path: "/"
+            path: "//"
         },
         {
             title: "Locais",

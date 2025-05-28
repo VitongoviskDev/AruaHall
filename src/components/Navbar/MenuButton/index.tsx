@@ -4,35 +4,39 @@ import { Link } from 'react-router-dom';
 
 import styles from './MenuButton.module.css'
 import type MenuButtonDTO from '../../../DTOs/MenuButtonDTO';
-import type SubmenuDTO from '../../../DTOs/SubmenuDTO';
-import { IoIosArrowDropdown } from 'react-icons/io';
+import { FaAngleDown } from 'react-icons/fa';
 
 interface MenuButtonProps {
     menuButton: MenuButtonDTO;
-    onMouseEnter: (submenus: SubmenuDTO[]) => void;
+    onClick: (menuButton: MenuButtonDTO) => void;
+    submenuShown: boolean;
+    closeMenu: () => void;
 }
 
-const MenuButton: React.FC<MenuButtonProps> = ({ menuButton, onMouseEnter }) => {
+const MenuButton: React.FC<MenuButtonProps> = ({ menuButton, onClick, submenuShown, closeMenu }) => {
 
     return (
-        <div className={styles.menuButton_container}
-            onMouseEnter={() => onMouseEnter(menuButton.submenus || [])}>
-            {
-                menuButton.path ?
-                    <Link
-                        className={`${styles.menuButton_title} ${styles.menuButton_link}`}
-                        to={menuButton.path}>
-                        {menuButton.title}
-                    </Link> :
-                    <span
-                        className={`${styles.menuButton_title}`}>
-                        {menuButton.title}
-                    </span>
-            }
+        <div className={`${styles.menuButton_container} ${submenuShown ? styles.active : ''}`}>
+            <div className={styles.menuButton_title_container}
+                onClick={closeMenu}>
+                {
+                    menuButton.path ?
+                        <Link
+                            className={`${styles.menuButton_title}`}
+                            to={menuButton.path}>
+                            {menuButton.title}
+                        </Link> :
+                        <span
+                            className={`${styles.menuButton_title}`}>
+                            {menuButton.title}
+                        </span>
+                }
+            </div>
             {
                 menuButton.submenus &&
-                <div className={styles.menuButton_dropdownIcon}>
-                    <IoIosArrowDropdown />
+                <div className={styles.menuButton_dropdownIcon}
+                    onClick={() => onClick(menuButton)}>
+                    <FaAngleDown />
                 </div>
             }
         </div>
