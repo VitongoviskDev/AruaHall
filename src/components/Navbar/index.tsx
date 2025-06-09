@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import styles from './Navbar.module.css'
 import Menu from '../../util/menu.js';
@@ -13,12 +13,26 @@ interface NavbarProps {
   id?: string;
 }
 
-const Navbar: React.FC<NavbarProps> = ({ closeMenu = () =>{}, id }) => {
+const Navbar: React.FC<NavbarProps> = ({ closeMenu = () => { }, id }) => {
+  const [width, setWidth] = useState(window.innerWidth);
   const [displayedSubmenu, setDisplayedSubmenu] = useState<MenuButtonDTO | null>();
+
+
+  useEffect(() => {
+    const handleResize = () => setWidth(window.innerWidth);
+    window.addEventListener("resize", handleResize);
+
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   const onMenuButtonClick = (menuButton: MenuButtonDTO) => {
     console.log("click")
-    setDisplayedSubmenu(prev => prev !== menuButton ? menuButton : null);
+    if (width < 1280)
+      setDisplayedSubmenu(prev => prev !== menuButton ? menuButton : null);
+  }
+  const onMenuButtonMouseEnter = (menuButton: MenuButtonDTO) => {
+    if (width >= 1280)
+      setDisplayedSubmenu(prev => prev !== menuButton ? menuButton : null);
   }
 
   const OnCloseMenu = () => {
@@ -38,12 +52,13 @@ const Navbar: React.FC<NavbarProps> = ({ closeMenu = () =>{}, id }) => {
                 <MenuButton
                   menuButton={item}
                   onClick={onMenuButtonClick}
+                  onMouseEnter={onMenuButtonMouseEnter}
                   closeMenu={OnCloseMenu}
                   submenuShown={displayedSubmenu == item} />
                 <SubmenuContainer
                   menuButton={item}
-                  shown={item == displayedSubmenu} 
-                  closeMenu={OnCloseMenu}/>
+                  shown={item == displayedSubmenu}
+                  closeMenu={OnCloseMenu} />
               </li>
             ))
           }

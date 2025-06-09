@@ -9,14 +9,16 @@ import { FaAngleDown } from 'react-icons/fa';
 interface MenuButtonProps {
     menuButton: MenuButtonDTO;
     onClick: (menuButton: MenuButtonDTO) => void;
+    onMouseEnter: (menuButton: MenuButtonDTO) => void;
     submenuShown: boolean;
     closeMenu: () => void;
 }
 
-const MenuButton: React.FC<MenuButtonProps> = ({ menuButton, onClick, submenuShown, closeMenu }) => {
+const MenuButton: React.FC<MenuButtonProps> = ({ menuButton, onClick, onMouseEnter, submenuShown, closeMenu }) => {
 
     return (
-        <div className={`${styles.menuButton_container} ${submenuShown ? styles.active : ''}`}>
+        <div className={`${styles.menuButton_container} ${submenuShown ? styles.active : ''}`}
+            onMouseEnter={() => { onMouseEnter(menuButton) }}>
             <div className={styles.menuButton_title_container}
                 onClick={closeMenu}>
                 {
