@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 
 import styles from './Navbar.module.css'
-import Menu from '../../util/menu.js';
+import { Menu } from '../../util/data.js';
 import MenuButton from './MenuButton';
 
 import type MenuButtonDTO from '../../DTOs/MenuButtonDTO';
@@ -45,7 +45,7 @@ const Navbar: React.FC<NavbarProps> = ({ closeMenu = () => { }, id }) => {
       <nav className={styles.navbar}>
         <ul className={styles.navbar_list}>
           {
-            Menu.items.map((item: MenuButtonDTO, index) => (
+            Menu.items.map((item: MenuButtonDTO, index: number) => (
               <li
                 className={styles.navbar_list_item}
                 key={index}>

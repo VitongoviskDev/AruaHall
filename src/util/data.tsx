@@ -9,8 +9,9 @@ import { BsBuildingsFill } from "react-icons/bs";
 import { MdCarRental, MdCleaningServices, MdEngineering } from "react-icons/md";
 import { LuBrickWall } from "react-icons/lu";
 import { SlSocialInstagram } from "react-icons/sl";
+import type CardDTO from "../DTOs/CardDto";
 
-const Menu: MenuItem = {
+export const Menu: MenuItem = {
     items: [
         {
             title: "Home",
@@ -32,7 +33,7 @@ const Menu: MenuItem = {
                         {
                             title: "Pousadas",
                             path: "/locals/leisure/inns",
-                            icon: <GiIsland  />
+                            icon: <GiIsland />
                         }
                     ]
                 }, {
@@ -127,7 +128,7 @@ const Menu: MenuItem = {
                         {
                             title: "Arquitetos",
                             path: "/services/constructions/architects",
-                            icon: <FaPencilRuler  />
+                            icon: <FaPencilRuler />
 
                         },
                         {
@@ -189,8 +190,129 @@ const Menu: MenuItem = {
     ]
 }
 
-export default Menu;
+export const ServiceCards: Cards = {
+    cards: [
+        {
+            Title: "Jardinagem",
+            Subtitle: "gramados, arbustos e pequenas arvores",
+            Rate: 4.5,
+            Categories: [
+                {
+                    id: 1,
+                    category: "Manutenção",
+                    subcategories: [
+                        {
+                            id: 1,
+                            subcategory: "Jardinagem"
+                        }
+                    ]
+                },
+                {
+                    id: 2,
+                    category: "Construção",
+                    subcategories: [
+                        {
+                            id: 1,
+                            subcategory: "Jardinagem"
+                        }
+                    ]
+                }
+            ],
+            Address: {
+                zipcode: "0123456789",
+                address: "Rua 12",
+                number: "1",
+                complement: "Q12 L07 B02",
+                city: "Mogi das Cruzes",
+                neighbor: "mogilar"
+            },
+            WorkingDays: [
+                {
+                    day: "Monday",
+                    start: "09:00:00",
+                    end: "18:00:00"
+                },
+                {
+                    day: "Tuesday",
+                    start: "09:00:00",
+                    end: "18:00:00"
+                },
+                {
+                    day: "Wednesday",
+                    start: "09:00:00",
+                    end: "18:00:00"
+                },
+                {
+                    day: "Thursday",
+                    start: "09:00:00",
+                    end: "18:00:00"
+                },
+                {
+                    day: "Friday",
+                    start: "09:00:00",
+                    end: "18:00:00"
+                }
+            ]
+        },
+        {
+            Title: "Pintura",
+            Subtitle: "especialistas de pintura interna e externa",
+            Rate: 4.0,
+            Categories: [
+                {
+                    id: 1,
+                    category: "Manutenção",
+                    subcategories: [
+                        {
+                            id: 2,
+                            subcategory: "Pintura"
+                        }
+                    ]
+                },
+                {
+                    id: 2,
+                    category: "Construção",
+                    subcategories: [
+                        {
+                            id: 2,
+                            subcategory: "Pintura"
+                        }
+                    ]
+                }
+            ],
+            Address: {
+                zipcode: "0123456789",
+                address: "Rua 12",
+                number: "1",
+                complement: "Q12 L07 B02",
+                city: "Mogi das Cruzes",
+                neighbor: "mogilar"
+            },
+            WorkingDays: [
+                {
+                    day: "Monday",
+                    start: "09:00:00",
+                    end: "18:00:00"
+                },
+                {
+                    day: "Tuesday",
+                    start: "09:00:00",
+                    end: "18:00:00"
+                },
+                {
+                    day: "Wednesday",
+                    start: "09:00:00",
+                    end: "18:00:00"
+                }
+            ]
+        }
+    ]
+}
 
 interface MenuItem {
     items: MenuButtonDTO[];
+}
+
+interface Cards {
+    cards: CardDTO[];
 }
