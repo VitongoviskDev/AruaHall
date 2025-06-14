@@ -1,0 +1,7 @@
+.menu_burger_container .menu_burger_button{
+    padding: .2em;
+
+    background-color: transparent;
+    border: none;
+    outline: none;
+}
